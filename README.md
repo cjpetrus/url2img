@@ -202,3 +202,16 @@ Examples:
   url2img http://google.com google.png
 ```
 
+## Test
+
+    npm test
+
+## Attribution
+
+This module was inspired by
+
+* [url-to-image](https://github.com/kimmobrunfeldt/url-to-image)
+
+# License
+
+MIT
