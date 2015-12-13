@@ -1,0 +1,38 @@
+{
+  "name": "url2img",
+  "version": "1.0.3",
+  "description": "PhantomJS screenshots done really right.",
+  "main": "src/index.js",
+  "bin": {
+    "url2img": "./src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:cjpetrus/url2img.git"
+  },
+  "keywords": [
+    "phantomjs",
+    "screenshot",
+    "render webpage"
+  ],
+  "author": "Casey Petrus",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cjpetrus/url2img/issues"
+  },
+  "dependencies": {
+    "bluebird": "3.0.x",
+    "lodash": "^3.10.1",
+    "phantomjs": "1.9.x",
+    "yargs": "3.29.x"
+  },
+  "devDependencies": {
+    "image-size": "~0.2.1",
+    "mocha": "^2.3.3",
+    "releasor": "^0.1.3"
+  },
+  "scripts": {
+    "test": "mocha"
+  }
+}
+
