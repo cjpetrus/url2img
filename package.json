@@ -1,6 +1,6 @@
 {
   "name": "url2img",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "PhantomJS screenshots done really right.",
   "main": "src/index.js",
   "bin": {
@@ -23,7 +23,7 @@
   "dependencies": {
     "bluebird": "3.0.x",
     "lodash": "^3.10.1",
-    "phantomjs": "1.9.x",
+    "phantomjs-prebuilt": "2.1.x",
     "yargs": "3.29.x"
   },
   "devDependencies": {
