@@ -4,7 +4,7 @@ var Promise = require('bluebird');
 var _ = require('lodash');
 var path = require('path');
 var childProcess = require('child_process');
-var phantomjs = require('phantomjs')
+var phantomjs = require('phantomjs-prebuilt')
 var cliParser = require('./cli-parser');
 
 function render(url, filePath, opts) {
