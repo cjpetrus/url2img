@@ -151,12 +151,13 @@ function renderPage(opts) {
         }
 
         var renderOpts = {
-            fileQuality: opts.fileQuality
+            quality: opts.fileQuality,
+            format:'png'
         };
 
         if (opts.fileType) {
             log("Adjusting File Type...");
-            renderOpts.fileType = opts.fileType;
+            renderOpts.format = opts.fileType;
         }
 
         pageToRender.render(opts.filePath, renderOpts);
