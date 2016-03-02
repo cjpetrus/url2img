@@ -2,11 +2,12 @@
 
 Takes screenshot of a given page. This module correctly handles pages which dynamically load content making AJAX requests.
 Instead of waiting fixed amount of time before rendering, we give a short time for the page to make additional requests.
+This library correctly handles all childProcess spawning and lifecycle management.
 
 **Usage from code:**
 
 ```javascript
-var urlToImage = require('url-to-image');
+var urlToImage = require('url2img');
 urlToImage('http://google.com', 'google.png').then(function() {
     // now google.png exists and contains screenshot of google.com
 }).catch(function(err) {
@@ -49,7 +50,7 @@ PhantomJS is installed by using [Medium/phantomjs NPM module](https://github.com
 ## API
 
 ```javascript
-var urlToImage = require('url-to-image');
+var urlToImage = require('url2img');
 ```
 
 #### urlToImage(url, filePath, options)
@@ -128,13 +129,20 @@ This will run a PhantomJS script([url-to-image.js](./src/url-to-image.js)) which
 **Detailed example**
 
 ```javascript
-var urlToImage = require('url-to-image');
+var urlToImage = require('url2img');
 
 var options = {
-    width: 600,
-    height: 800,
-    // Give a short time to load additional resources
-    requestTimeout: 100
+    fileQuality:70,
+    width: 1600,
+    height: 900,
+    cropWidth: 1600,
+    cropHeight: 900,
+    cropOffsetLeft: 0,
+    cropOffsetTop: 0,     
+    fileType: 'jpeg',
+    requestTimeout: 300,
+    maxTimeout: 1000 * 10,
+    killTimeout: 1000 * 60 * 2
 }
 
 urlToImage('http://google.com', 'google.png', options)
