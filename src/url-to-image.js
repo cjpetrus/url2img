@@ -138,11 +138,9 @@ function renderPage(opts) {
 
     function renderAndExit() {
         log('Render screenshot..');
-        var pageToRender = page;
-        page.close(); //close the page so no more requests come in.
         if (opts.cropWidth && opts.cropHeight) {
             log("Cropping...");
-            pageToRender.clipRect = {
+            page.clipRect = {
                 top: opts.cropOffsetTop,
                 left: opts.cropOffsetLeft,
                 width: opts.cropWidth,
@@ -155,15 +153,32 @@ function renderPage(opts) {
             format:'png'
         };
 
+        var oldOpts = {
+            fileQuality: opts.fileQuality,
+            fileType: 'png',
+        };
+
         if (opts.fileType) {
             log("Adjusting File Type...");
             renderOpts.format = opts.fileType;
+            oldOpts.fileType = opts.fileType;
         }
 
-        pageToRender.render(opts.filePath, renderOpts);
-        pageToRender.close();
-        log('done.');
-        exit();
+        var count = 0;
+        setInterval(function () {
+            if (count > opts.maxTimeout / opts.requestTimeout) {
+                log('timeout.');
+                exit(1);
+            }
+
+            if (page.render(opts.filePath, renderOpts) || page.render(opts.filePath, oldOpts)) {
+                page.close();
+                log('done.');
+                exit();
+            }
+
+            count++;
+        }, opts.requestTimeout);
     }
 }
 //custom exit function
