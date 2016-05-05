@@ -153,9 +153,15 @@ function renderPage(opts) {
             format:'png'
         };
 
+        var oldOpts = {
+            fileQuality: opts.fileQuality,
+            fileType: 'png',
+        };
+
         if (opts.fileType) {
             log("Adjusting File Type...");
             renderOpts.format = opts.fileType;
+            oldOpts.fileType = opts.fileType;
         }
 
         var count = 0;
@@ -165,7 +171,7 @@ function renderPage(opts) {
                 exit(1);
             }
 
-            if (page.render(opts.filePath, renderOpts)) {
+            if (page.render(opts.filePath, renderOpts) || page.render(opts.filePath, oldOpts)) {
                 page.close();
                 log('done.');
                 exit();
