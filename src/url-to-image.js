@@ -158,10 +158,21 @@ function renderPage(opts) {
             renderOpts.format = opts.fileType;
         }
 
-        page.render(opts.filePath, renderOpts);
-        page.close();
-        log('done.');
-        exit();
+        var count = 0;
+        setInterval(function () {
+            if (count > opts.maxTimeout / opts.requestTimeout) {
+                log('timeout.');
+                exit(1);
+            }
+
+            if (page.render(opts.filePath, renderOpts)) {
+                page.close();
+                log('done.');
+                exit();
+            }
+
+            count++;
+        }, opts.requestTimeout);
     }
 }
 //custom exit function
