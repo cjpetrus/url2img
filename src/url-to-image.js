@@ -138,11 +138,9 @@ function renderPage(opts) {
 
     function renderAndExit() {
         log('Render screenshot..');
-        var pageToRender = page;
-        page.close(); //close the page so no more requests come in.
         if (opts.cropWidth && opts.cropHeight) {
             log("Cropping...");
-            pageToRender.clipRect = {
+            page.clipRect = {
                 top: opts.cropOffsetTop,
                 left: opts.cropOffsetLeft,
                 width: opts.cropWidth,
@@ -160,8 +158,8 @@ function renderPage(opts) {
             renderOpts.format = opts.fileType;
         }
 
-        pageToRender.render(opts.filePath, renderOpts);
-        pageToRender.close();
+        page.render(opts.filePath, renderOpts);
+        page.close();
         log('done.');
         exit();
     }
