@@ -119,7 +119,7 @@ function renderPage(opts) {
         successCallbacks += 1;
         if (successCallbacks == 1) {
             clearTimeout(dynamicRenderTimeout);
-            waitForFrameToRender();
+            waitForFrameToRender(opts.requestTimeout ? opts.requestTimeout : 1000);
         }
     }
 
