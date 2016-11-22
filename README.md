@@ -209,3 +209,17 @@ Options:
 Examples:
   url2img http://google.com google.png
 ```
+	
+#Attribution
+
+This module was inspired by
+
+url-to-screenshot
+https://gist.github.com/cjoudrey/1341747
+
+url-to-image
+https://github.com/kimmobrunfeldt/url-to-image
+
+#License
+
+MIT
