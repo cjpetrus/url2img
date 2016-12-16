@@ -154,7 +154,7 @@ function renderPage(opts) {
         };
 
         var oldOpts = {
-            fileQuality: opts.fileQuality,
+            quality: opts.fileQuality,
             fileType: 'png',
         };
 
